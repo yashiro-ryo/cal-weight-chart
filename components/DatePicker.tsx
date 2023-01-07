@@ -20,13 +20,9 @@ export default function DatePicker() {
     setDay(day);
   };
 
-  let isSetupPrepared = false;
   useEffect(() => {
-    if (!isSetupPrepared) {
-      const date = new Date();
-      setDate(date.getFullYear(), date.getMonth() + 1, date.getDay() + 1);
-      isSetupPrepared = true;
-    }
+    const date = new Date();
+    setDate(date.getFullYear(), date.getMonth() + 1, date.getDay() + 1);
   }, []);
 
   const getNextDay = () => {
