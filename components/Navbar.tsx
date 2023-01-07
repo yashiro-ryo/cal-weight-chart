@@ -1,5 +1,6 @@
 import { Container, Button } from "react-bootstrap";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -21,12 +22,23 @@ const StyledButton = styled(Button)`
 `;
 
 export default function Navbar() {
+  const router = useRouter();
+  const onclick = (path: string) => {
+    router.push(path);
+  };
+
   return (
     <StyledNav>
       <StyledContainer>
-        <StyledButton variant="light">グラフ</StyledButton>
-        <StyledButton variant="light">記録</StyledButton>
-        <StyledButton variant="light">設定</StyledButton>
+        <StyledButton variant="light" onClick={() => onclick("/")}>
+          グラフ
+        </StyledButton>
+        <StyledButton variant="light" onClick={() => onclick("/edit")}>
+          記録
+        </StyledButton>
+        <StyledButton variant="light" onClick={() => onclick("/setting")}>
+          設定
+        </StyledButton>
       </StyledContainer>
     </StyledNav>
   );
